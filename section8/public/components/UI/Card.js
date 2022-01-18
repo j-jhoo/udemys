@@ -1,4 +1,8 @@
 import React from "react";
-const Card = () => {};
+import "./Card.module.css";
+
+const Card = (props) => {
+  return <div>{props.Children}</div>;
+};
 
 export default Card;
