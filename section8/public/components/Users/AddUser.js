@@ -16,7 +16,7 @@ const AddUser = (props) => {
   };
 
   const ageChangeHandler = (event) => {
-    setEntered Age(event.target.value);
+    setEnteredAge(event.target.value);
   };
 
   return (
