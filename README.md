@@ -1,4 +1,4 @@
-# Udemys
+# Udemy
 
 - React.js, typescript, Node.js에 대해서 공부하기
 
