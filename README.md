@@ -18,3 +18,11 @@
 - 포털 작업하기
 - ref로 작업하기
 - 제어되는 컴포넌트와 제어되지 않는 컴포넌트
+
+## section 10-1
+
+- useEffect 훅 사용하기
+- useEffect & 종속성
+- 종속성으로 추가할 항목 및 추가하지 않을 항목
+- useEffect에서 cleanup 함수 사용하기
+- useReducer 및 Reducers
