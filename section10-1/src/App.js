@@ -13,14 +13,24 @@ function App() {
   // 그래서 리로딩의 영향을 받지 않는 곳에 저장해두면 좋겠다. -> 앱이 시작할 때 데이터가 유지됐는지 확인도 가능. (만약 유지됐다면 유저를 자동으로 로그인시켜 정보를 재차 입력할 필요가 없게 만들 수 있다.)
   // useEffect()활용 가능
 
-  const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
-  // 로컬스토리지에서 getItem을 호출하고 isLoggedIn을 검색하면 저장된 아이템들이 반환됨.
+  // const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
+  // // 로컬스토리지에서 getItem을 호출하고 isLoggedIn을 검색하면 저장된 아이템들이 반환됨.
 
-  if (storedUserLoggedInInformation === "1") {
-    setIsLoggedIn("true");
-    // 1이 맞다면 setIsLoggedIn을 호출해서 이를 true로 설정한다. -> 유저가 로그인으로 설정된다.
-    // useState가 실행된 이후에 실행 (하지만 이러할 경우 무한루프를 만들 수 있다. )
-  }
+  // if (storedUserLoggedInInformation === "1") {
+  //   setIsLoggedIn("true");
+  //   // 1이 맞다면 setIsLoggedIn을 호출해서 이를 true로 설정한다. -> 유저가 로그인으로 설정된다.
+  //   // useState가 실행된 이후에 실행 (하지만 이러할 경우 무한루프를 만들 수 있다. )
+  // } -> useEffect(안으로 들어가게됨)
+
+  useEffect(() => {
+    const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
+
+    if (storedUserLoggedInInformation === "1") {
+      setIsLoggedIn("true");
+    }
+  }, []);
+  // 두개의 인수를 전달. (첫번째 인수는 화살표 함수 이용, 두번째 인수는 디펜던시)
+  // 컴포넌트 함수에서 직접적으로 실행하면 안되는 코드 -> 리엑트에 의해서 실행, 모든 컴포넌트 재평가 이후에 실행!!
 
   const loginHandler = (email, password) => {
     localStorage.setItem("isLoggedIn", "1");
