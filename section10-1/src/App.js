@@ -6,6 +6,10 @@ import MainHeader from "./components/MainHeader/MainHeader";
 
 function App() {
   const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
+
+  if (storedUserLoggedInInformation === "1") {
+    setIsLoggedIn("true");
+  }
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const loginHandler = (email, password) => {
