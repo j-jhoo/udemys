@@ -20,7 +20,7 @@ function App() {
   //   setIsLoggedIn("true");
   //   // 1이 맞다면 setIsLoggedIn을 호출해서 이를 true로 설정한다. -> 유저가 로그인으로 설정된다.
   //   // useState가 실행된 이후에 실행 (하지만 이러할 경우 무한루프를 만들 수 있다. )
-  // } -> useEffect(안으로 들어가게됨)
+  // // } -> useEffect(안으로 들어가게됨)
 
   useEffect(() => {
     const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
@@ -39,6 +39,8 @@ function App() {
   };
 
   const logoutHandler = () => {
+    localStorage.removeItem("isLoggedIn");
+    // 로그아웃버튼을 눌렀을때 로컬스토리지의 isLoggedIn키가 지워지게 된다.
     setIsLoggedIn(false);
   };
 
