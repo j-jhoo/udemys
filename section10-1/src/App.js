@@ -26,7 +26,7 @@ function App() {
     const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
 
     if (storedUserLoggedInInformation === "1") {
-      setIsLoggedIn("true");
+      setIsLoggedIn("false");
     }
   }, []);
   // 두개의 인수를 전달. (첫번째 인수는 화살표 함수 이용, 두번째 인수는 디펜던시)
