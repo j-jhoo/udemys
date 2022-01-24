@@ -41,7 +41,7 @@ function App() {
   const logoutHandler = () => {
     localStorage.removeItem("isLoggedIn");
     // 로그아웃버튼을 눌렀을때 로컬스토리지의 isLoggedIn키가 지워지게 된다.
-    setIsLoggedIn(false);
+    setIsLoggedIn(true);
   };
 
   return (
