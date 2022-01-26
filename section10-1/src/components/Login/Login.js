@@ -11,6 +11,7 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  // setTimeout => builtin 메서드
   useEffect(() => {
     setTimeout(() => {
       setFormIsValid(
