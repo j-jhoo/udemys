@@ -19,7 +19,8 @@ const Login = (props) => {
       );
     }, 500);
 
-    // 클린업 함수
+    // 클린업 함수 (익명의 함수 리턴)
+    // - 돔에서부터 특정한 컴포넌트가
     return () => {};
   }, [enteredEmail, enteredPassword]);
 
