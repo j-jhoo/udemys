@@ -20,6 +20,7 @@ const Login = (props) => {
     }, 500);
 
     // 클린업 함수 (익명의 함수 리턴)
+    // - useEffect 함수가 작동할 때마다, 작동하기 전에, 돌아가는 아주 첫 번째를 제외하고는 클린업 함수가 돌아간다.
     // - 돔에서부터 특정한 컴포넌트가
     return () => {};
   }, [enteredEmail, enteredPassword]);
