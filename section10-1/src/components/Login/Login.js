@@ -18,6 +18,9 @@ const Login = (props) => {
         enteredEmail.includes("@") && enteredPassword.trim().length > 6
       );
     }, 500);
+
+    // 클린업 함수
+    return () => {};
   }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
