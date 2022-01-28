@@ -11,3 +11,4 @@ About React.JS
 
 - (useEffect) 사용 가능 하다.
 - useEffect 내부에 클린업 코드를 작성
+- useEffect 와 useReducer 차이
