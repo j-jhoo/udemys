@@ -5,7 +5,7 @@ import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
 const emailReducer = (state, action) => {
-  // return { value: "", isValid: false };
+  return { value: "", isValid: false };
 };
 // useReducer의 첫번째 인수인 함수를 상수에 저장해서 사용할 수 있음
 // Reducer함수를 컴포넌트 함수 밖에서 만든것에 주목 (
