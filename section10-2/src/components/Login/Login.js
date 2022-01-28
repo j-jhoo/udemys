@@ -5,6 +5,8 @@ import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
 const emailReducer = (state, action) => {
+  if()
+  // 액션을 다루는 추가
   return { value: "", isValid: false };
 };
 // useReducer의 첫번째 인수인 함수를 상수에 저장해서 사용할 수 있음
@@ -53,7 +55,8 @@ const Login = (props) => {
   // }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
+    dispatchEmail({ type: "USER_INPUT", val: event.target.value });
+    // 대게로 객체를 많이 사용함
 
     setFormIsValid(
       event.target.value.includes("@") && enteredPassword.trim().length > 6
