@@ -4,12 +4,17 @@ import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
-const emailReducer = () => {};
+const emailReducer = (state, action) => {
+  // return { value: "", isValid: false };
+};
 // useReducer의 첫번째 인수인 함수를 상수에 저장해서 사용할 수 있음
 // Reducer함수를 컴포넌트 함수 밖에서 만든것에 주목 (
 // - 밖에서 만든 Reducer함수 안에서는 컴포넌트 함수 안에서 만들어진 데이터는 필요하지 않다.
 // - 그래서 Reducer함수는 컴포넌트 밖에서 만들어져야한다.
+// - 컴포넌트 함수 내부의 것들과 상호작용할 필요가 없어진다.
+// - Reducer안에서 활용될 모든 데이터는 이 함수로 전달된다. => 리엑트에 의해서 자동으로 실행된다.
 // )
+// 2개의 인수와 2개의 파라미터를 갖는다.
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
