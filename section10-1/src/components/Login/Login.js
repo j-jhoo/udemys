@@ -11,6 +11,14 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  useEffect(() => {
+    console.log("Effect Running:::");
+
+    return () => {
+      console.log("lalablaalal");
+    };
+  });
+
   // setTimeout,clearTimeout  => 브라우저 빌트인 메서드
   // useEffect(() => {
   //   const identifier = setTimeout(() => {
