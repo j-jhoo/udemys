@@ -26,3 +26,16 @@
 - 종속성으로 추가할 항목 및 추가하지 않을 항목
 - useEffect에서 cleanup 함수 사용하기
 - useReducer 및 Reducers
+
+## section 10-2
+
+- useReducer 훅 사용
+- 중첩 속성을 useEffect에 종속성으로 추가하기
+- State 관리를 위한 useReducer vs useState
+- 리액트 Context소개
+- 리액트 컨텍스트 API 사용
+- useContext 훅으로 컨텍스트에 탭핑하기
+- 컨텍스트를 동적으로 만들기
+- 사용자 정의 컨텍스트 제공자 구성요소 빌드 및 사용
+- 리액트 컨텍스트 제한
+- Hooks의 규칙 배우기
