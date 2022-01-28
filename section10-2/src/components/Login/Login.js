@@ -6,6 +6,10 @@ import Button from "../UI/Button/Button";
 
 const emailReducer = () => {};
 // useReducer의 첫번째 인수인 함수를 상수에 저장해서 사용할 수 있음
+// Reducer함수를 컴포넌트 함수 밖에서 만든것에 주목 (
+// - 밖에서 만든 Reducer함수 안에서는 컴포넌트 함수 안에서 만들어진 데이터는 필요하지 않다.
+// - 그래서 Reducer함수는 컴포넌트 밖에서 만들어져야한다.
+// )
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
