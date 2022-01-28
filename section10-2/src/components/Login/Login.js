@@ -23,7 +23,11 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const [emailState, dispatchEmail] = useReducer(emailReducer);
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
+    vlaue: "",
+    isValid: false,
+    // emailState에 대한 스냅숏의 설정 초기 상태
+  });
   // useReducer -> 첫번째 인수는 함수!!
 
   useEffect(() => {
@@ -60,7 +64,7 @@ const Login = (props) => {
     setEnteredPassword(event.target.value);
 
     setFormIsValid(
-      enteredEmail.includes("@") && event.target.value.trim().length > 6
+      emailState.value.includes("@") && event.target.value.trim().length > 6
     );
   };
 
