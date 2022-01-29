@@ -11,6 +11,7 @@ const emailReducer = (state, action) => {
   // 액션을 다루는 추가
   // 액션으로 디스패치 한 것은 개체
   // 해당 개체는 우형필드를 가진다. => action.type로 유형 필드에 저장된 값이 USER_INPUT과 맞는지 확인해본다.
+  // 두 값을 모두 업데이트하며,
 
   return { value: "", isValid: false };
 };
