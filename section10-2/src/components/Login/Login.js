@@ -79,7 +79,7 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    dispatchEmail;
+    dispatchEmail({});
   };
 
   const validatePasswordHandler = () => {
