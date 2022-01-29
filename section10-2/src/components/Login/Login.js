@@ -16,6 +16,7 @@ const emailReducer = (state, action) => {
   if (action.type === "INPUT_BLUR") {
     return { value: "", isValid: false };
     // 새로운 스냅샷 반환 -> emailState에 대한 새로운 상태 값
+    // value안에 들어갈 값이 이전에 있었던 값이어야 한다. (빈 상태로 리셋 불가능!!)
   }
   return { value: "", isValid: false };
   // 이 Reducer에 닿을 수 있는 다른 행동에 대해서는 { value: "", isValid: false } 이 상태가 반환된다.
