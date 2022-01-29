@@ -62,6 +62,7 @@ const Login = (props) => {
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
     // 대게로 객체를 많이 사용함
+    // 유저가 입력한 값을 저장하는 것
 
     setFormIsValid(
       event.target.value.includes("@") && enteredPassword.trim().length > 6
