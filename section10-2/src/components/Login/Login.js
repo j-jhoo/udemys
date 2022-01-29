@@ -14,10 +14,10 @@ const emailReducer = (state, action) => {
   // 해당 개체는 우형필드를 가진다. => action.type로 유형 필드에 저장된 값이 USER_INPUT과 맞는지 확인해본다.
   // 두 값(value, isValid)을 모두 업데이트하며, 유저 인풋 액션을 받았을 때 isValid도 업데이트 한다.
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: false };
+    return { value: state.value, isValid: state.value.includes("@") };
     // 새로운 스냅샷 반환 -> emailState에 대한 새로운 상태 값
     // value안에 들어갈 값이 이전에 있었던 값이어야 한다. (빈 상태로 리셋 불가능!!)
-    // state는 최신 스냅숏
+    // state는 최신 스냅숏 -> 추가 액션
   }
   return { value: "", isValid: false };
   // 이 Reducer에 닿을 수 있는 다른 행동에 대해서는 { value: "", isValid: false } 이 상태가 반환된다.
