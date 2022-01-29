@@ -79,7 +79,7 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    dispatchEmail({});
+    dispatchEmail({ type: "" });
     // 유형 필드를 통해 객체를 디스패치 해야한다.
   };
 
