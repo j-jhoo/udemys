@@ -79,8 +79,8 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    dispatchEmail({ type: "" });
-    // 유형 필드를 통해 객체를 디스패치 해야한다.
+    dispatchEmail({ type: "INPUT_BLUR" });
+    // 유형 필드를 통해 객체를 디스패치 해야한다. 인풋이 포커스를 잃어서 흐려졌다.
   };
 
   const validatePasswordHandler = () => {
