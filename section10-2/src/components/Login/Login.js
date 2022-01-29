@@ -32,6 +32,23 @@ const emailReducer = (state, action) => {
 // )
 // 2개의 인수와 2개의 파라미터를 갖는다.
 
+const passwordReducer = (state, action) => {
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.val.includes("@") };
+  }
+  // 액션을 다루는 추가
+  // 액션으로 디스패치 한 것은 개체
+  // 해당 개체는 우형필드를 가진다. => action.type로 유형 필드에 저장된 값이 USER_INPUT과 맞는지 확인해본다.
+  // 두 값(value, isValid)을 모두 업데이트하며, 유저 인풋 액션을 받았을 때 isValid도 업데이트 한다.
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.includes("@") };
+    // 새로운 스냅샷 반환 -> emailState에 대한 새로운 상태 값
+    // value안에 들어갈 값이 이전에 있었던 값이어야 한다. (빈 상태로 리셋 불가능!!)
+    // state는 최신 스냅숏 -> 추가 액션
+  }
+  return { value: "", isValid: false };
+};
+
 const Login = (props) => {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
