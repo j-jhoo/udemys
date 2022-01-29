@@ -7,7 +7,8 @@ import Button from "../UI/Button/Button";
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
     // 액션 스트럭쳐를(type) 한번 결정했다면 일관되게 지켜줘야 한다.
-    return { value: action.val, isValid: action.valid.includes("@") };
+    return { value: action.val, isValid: action.val.includes("@") };
+    // 앞에 val값을 가져와야하기 때문에 action.val이 되는게 맞다.
   }
   // 액션을 다루는 추가
   // 액션으로 디스패치 한 것은 개체
