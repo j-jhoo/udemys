@@ -34,17 +34,10 @@ const emailReducer = (state, action) => {
 
 const passwordReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.includes("@") };
+    return { value: action.val, isValid: action.val.trim().length > 6 };
   }
-  // 액션을 다루는 추가
-  // 액션으로 디스패치 한 것은 개체
-  // 해당 개체는 우형필드를 가진다. => action.type로 유형 필드에 저장된 값이 USER_INPUT과 맞는지 확인해본다.
-  // 두 값(value, isValid)을 모두 업데이트하며, 유저 인풋 액션을 받았을 때 isValid도 업데이트 한다.
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
-    // 새로운 스냅샷 반환 -> emailState에 대한 새로운 상태 값
-    // value안에 들어갈 값이 이전에 있었던 값이어야 한다. (빈 상태로 리셋 불가능!!)
-    // state는 최신 스냅숏 -> 추가 액션
+    return { value: state.value, isValid: state.value.trim().length > 6 };
   }
   return { value: "", isValid: false };
 };
@@ -52,8 +45,8 @@ const passwordReducer = (state, action) => {
 const Login = (props) => {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
-  const [enteredPassword, setEnteredPassword] = useState("");
-  const [passwordIsValid, setPasswordIsValid] = useState();
+  // const [enteredPassword, setEnteredPassword] = useState("");
+  // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
@@ -62,6 +55,11 @@ const Login = (props) => {
     // emailState에 대한 스냅숏의 설정 초기 상태
   });
   // useReducer -> 첫번째 인수는 함수!!
+
+  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
+    value: "",
+    isValid: null,
+  });
 
   useEffect(() => {
     console.log("EFFECT RUNNING");
@@ -90,13 +88,11 @@ const Login = (props) => {
     // 대게로 객체를 많이 사용함
     // 유저가 입력한 값을 저장하는 것
 
-    setFormIsValid(
-      event.target.value.includes("@") && enteredPassword.trim().length > 6
-    );
+    setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
   };
 
   const passwordChangeHandler = (event) => {
-    setEnteredPassword(event.target.value);
+    dispatchPassword({ type: "USER_INPUT", val: event.target.value });
 
     setFormIsValid(emailState.isValid && event.target.value.trim().length > 6);
   };
@@ -107,12 +103,12 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    dispatchEmail({ type: "INPUT_BLUR" });
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, enteredPassword);
+    props.onLogin(emailState.value, passwordState.value);
   };
 
   return (
@@ -134,14 +130,14 @@ const Login = (props) => {
         </div>
         <div
           className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ""
+            passwordState.isValid === false ? classes.invalid : ""
           }`}
         >
           <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
-            value={enteredPassword}
+            value={passwordState.value}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
           />
