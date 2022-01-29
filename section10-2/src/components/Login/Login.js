@@ -14,6 +14,7 @@ const emailReducer = (state, action) => {
   // 두 값(value, isValid)을 모두 업데이트하며, 유저 인풋 액션을 받았을 때 isValid도 업데이트 한다.
 
   return { value: "", isValid: false };
+  // 이 Reducer에 닿을 수 있는 다른 행동에 대해서는 { value: "", isValid: false } 이 상태가 반환된다.
 };
 // useReducer의 첫번째 인수인 함수를 상수에 저장해서 사용할 수 있음
 // Reducer함수를 컴포넌트 함수 밖에서 만든것에 주목 (
