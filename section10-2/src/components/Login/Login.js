@@ -79,7 +79,7 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    dispatchEmail({ type: "INPURT_BLUR" });
+    dispatchEmail;
   };
 
   const validatePasswordHandler = () => {
