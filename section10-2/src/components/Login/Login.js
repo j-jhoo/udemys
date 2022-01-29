@@ -5,8 +5,13 @@ import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
 const emailReducer = (state, action) => {
-  if()
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.valid.includes("@") };
+  }
   // 액션을 다루는 추가
+  // 액션으로 디스패치 한 것은 개체
+  // 해당 개체는 우형필드를 가진다. => action.type로 유형 필드에 저장된 값이 USER_INPUT과 맞는지 확인해본다.
+
   return { value: "", isValid: false };
 };
 // useReducer의 첫번째 인수인 함수를 상수에 저장해서 사용할 수 있음
@@ -70,7 +75,7 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    setEmailIsValid(emailState.isValid);
+    dispatchEmail({ type: "INPURT_BLUR" });
   };
 
   const validatePasswordHandler = () => {
