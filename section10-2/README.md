@@ -4,3 +4,5 @@ About React.JS
 - Section 10-2
 
   :: 구현 사항 설명
+
+- useReducer & useEffect
