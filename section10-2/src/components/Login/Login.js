@@ -88,8 +88,9 @@ const Login = (props) => {
     // 대게로 객체를 많이 사용함
     // 유저가 입력한 값을 저장하는 것
 
-    setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
-  };
+  //   setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
+  // };
+ //  쪼개져있는 state는 좋지 않음 
 
   const passwordChangeHandler = (event) => {
     dispatchPassword({ type: "USER_INPUT", val: event.target.value });
