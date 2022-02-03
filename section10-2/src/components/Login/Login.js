@@ -88,6 +88,7 @@ const Login = (props) => {
       clearTimeout(identifier);
     };
   }, [emailIsValid, passwordIsValid]);
+  // emailIsValid와 passwordISValid를 끌어내려서 사용할 경우 비밀번호를 계속 입력하더라도 유효성검사를 계속하지 않는다. 
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
