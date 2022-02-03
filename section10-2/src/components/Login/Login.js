@@ -69,6 +69,12 @@ const Login = (props) => {
     };
   }, []);
 
+  const {isValid: emailIsValid}  = emailState;
+  const {isValid: passwordIsValid} = passwordState;
+  // 에일리어스 할당 => 값을 할당하는것이 아니라 에일리어스를 할당하는 것 
+  // 등호 왼편에서 꺽인 괄호를 사용할때 자동으로 사용하는 문법인 디스트럭쳐링 문법의 일부
+
+
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log('Checking form validity!');
