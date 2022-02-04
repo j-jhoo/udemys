@@ -69,95 +69,99 @@ const Login = (props) => {
     };
   }, []);
 
-  const {isValid: emailIsValid}  = emailState;
-  const {isValid: passwordIsValid} = passwordState;
-  // 에일리어스 할당 => 값을 할당하는것이 아니라 에일리어스를 할당하는 것 
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
+  // 에일리어스 할당 => 값을 할당하는것이 아니라 에일리어스를 할당하는 것
   // 등호 왼편에서 꺽인 괄호를 사용할때 자동으로 사용하는 문법인 디스트럭쳐링 문법의 일부
-  // effect의 dependency로 props를 가질 수 있다. 
-
+  // effect의 dependency로 props를 가질 수 있다.
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      console.log('Checking form validity!');
-      setFormIsValid(
-        emailIsValid && passwordIsValid
-      );
+      console.log("Checking form validity!");
+      setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
 
     return () => {
-      console.log('CLEANUP');
+      console.log("CLEANUP");
       clearTimeout(identifier);
     };
   }, [emailIsValid, passwordIsValid]);
-  // emailIsValid와 passwordISValid를 끌어내려서 사용할 경우 비밀번호를 계속 입력하더라도 유효성검사를 계속하지 않는다. 
+  // emailIsValid와 passwordISValid를 끌어내려서 사용할 경우 비밀번호를 계속 입력하더라도 유효성검사를 계속하지 않는다.
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
     // 대게로 객체를 많이 사용함
     // 유저가 입력한 값을 저장하는 것
-  //   setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
-  // };
- //  쪼개져있는 state는 좋지 않음 
+    //   setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
+    // };
+    //  쪼개져있는 state는 좋지 않음
 
-  const passwordChangeHandler = (event) => {
-    dispatchPassword({ type: "USER_INPUT", val: event.target.value });
+    const passwordChangeHandler = (event) => {
+      dispatchPassword({ type: "USER_INPUT", val: event.target.value });
 
-    setFormIsValid(emailState.isValid && event.target.value.trim().length > 6);
+      setFormIsValid(
+        emailState.isValid && event.target.value.trim().length > 6
+      );
+    };
+
+    const validateEmailHandler = () => {
+      dispatchEmail({ type: "INPUT_BLUR" });
+      // 유형 필드를 통해 객체를 디스패치 해야한다. 인풋이 포커스를 잃어서 흐려졌다.
+    };
+
+    const validatePasswordHandler = () => {
+      dispatchEmail({ type: "INPUT_BLUR" });
+    };
+
+    const submitHandler = (event) => {
+      event.preventDefault();
+      props.onLogin(emailState.value, passwordState.value);
+    };
+
+    return (
+      <Card className={classes.login}>
+        <form onSubmit={submitHandler}>
+          <div
+            className={`${classes.control} ${
+              emailState.isValid === false ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="email">E-Mail</label>
+            <input
+              type="email"
+              id="email"
+              value={emailState.value}
+              onChange={emailChangeHandler}
+              onBlur={validateEmailHandler}
+            />
+          </div>
+          <div
+            className={`${classes.control} ${
+              passwordState.isValid === false ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={passwordState.value}
+              onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
+            />
+          </div>
+          <div className={classes.actions}>
+            <Button
+              type="submit"
+              className={classes.btn}
+              disabled={!formIsValid}
+            >
+              Login
+            </Button>
+          </div>
+        </form>
+      </Card>
+    );
   };
-
-  const validateEmailHandler = () => {
-    dispatchEmail({ type: "INPUT_BLUR" });
-    // 유형 필드를 통해 객체를 디스패치 해야한다. 인풋이 포커스를 잃어서 흐려졌다.
-  };
-
-  const validatePasswordHandler = () => {
-    dispatchEmail({ type: "INPUT_BLUR" });
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
-  };
-
-  return (
-    <Card className={classes.login}>
-      <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            passwordState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={passwordState.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
-        <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
-            Login
-          </Button>
-        </div>
-      </form>
-    </Card>
-  );
 };
 
 export default Login;
