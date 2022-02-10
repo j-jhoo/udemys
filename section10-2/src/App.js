@@ -29,16 +29,14 @@ function App() {
   };
 
   return (
-    <React.Fragment>
-      <AuthContext.Provider>
-        {/* 점을 찍으면 컴포넌트를 포함하고 있는 객체 상의 특징을 볼 수 있고,그것이 공급자이다.  */}
-        <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
-        <main>
-          {!isLoggedIn && <Login onLogin={loginHandler} />}
-          {isLoggedIn && <Home onLogout={logoutHandler} />}
-        </main>
-      </AuthContext.Provider>
-    </React.Fragment>
+    <AuthContext.Provider>
+      {/* 점을 찍으면 컴포넌트를 포함하고 있는 객체 상의 특징을 볼 수 있고,그것이 공급자이다.  */}
+      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+      <main>
+        {!isLoggedIn && <Login onLogin={loginHandler} />}
+        {isLoggedIn && <Home onLogout={logoutHandler} />}
+      </main>
+    </AuthContext.Provider>
   );
 }
 
