@@ -1,28 +1,37 @@
-import React from 'react';
+import React from "react";
 
-import classes from './Navigation.module.css';
+import AuthContext from "../../store/auth-context";
+import classes from "./Navigation.module.css";
 
 const Navigation = (props) => {
   return (
-    <nav className={classes.nav}>
-      <ul>
-        {props.isLoggedIn && (
-          <li>
-            <a href="/">Users</a>
-          </li>
-        )}
-        {props.isLoggedIn && (
-          <li>
-            <a href="/">Admin</a>
-          </li>
-        )}
-        {props.isLoggedIn && (
-          <li>
-            <button onClick={props.onLogout}>Logout</button>
-          </li>
-        )}
-      </ul>
-    </nav>
+    <AuthContext.Consumer>
+      {(ctx) => {
+        return (
+          <nav className={classes.nav}>
+            <ul>
+              {props.isLoggedIn && (
+                <li>
+                  <a href="/">Users</a>
+                </li>
+              )}
+              {props.isLoggedIn && (
+                <li>
+                  <a href="/">Admin</a>
+                </li>
+              )}
+              {props.isLoggedIn && (
+                <li>
+                  <button onClick={props.onLogout}>Logout</button>
+                </li>
+              )}
+            </ul>
+          </nav>
+        );
+      }}
+      {/* consumer은 자식으로 함수가 있어야 하는데 전달인자로는 context데이터를 취한다.
+          jsx코드는 자식인 함수 안으로 들어가야한다.   */}
+    </AuthContext.Consumer>
   );
 };
 
