@@ -13,3 +13,7 @@ export default AuthContext;
 // * 공급은 jsx코드에서 wrap하는 것을 뜻하다.
 // * 모든 컴포넌트 내에서 context를 들을 수 있어야 한다.
 // * !! wrap되지 않은 컴포넌트는 들을 수 없다.
+
+// - 두번째 방법 : value 값에 접근하기 위한 리스닝 방법
+// * (1) Auth-Context consumer를 이용
+// * (2) React Hook이용
